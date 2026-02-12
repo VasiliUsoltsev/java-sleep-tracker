@@ -6,22 +6,20 @@ import ru.yandex.practicum.sleeptracker.exception.FunctionException;
 import java.util.List;
 import java.util.function.Function;
 
-public class AvgDurationSleepSession extends BasicFunction<String> {
+public class AvgDurationSleepSession extends BasicFunction<Integer> {
     public AvgDurationSleepSession(String resultDescription) {
         super(getFunction(), resultDescription);
     }
 
-    private static Function<List<SleepingSession>, String> getFunction() {
+    private static Function<List<SleepingSession>, Integer> getFunction() {
         return list -> {
-            return String.format("%.2f",
-                    list.stream()
-                            .mapToLong(SleepingSession::getDurationInMinutes)
-                            .average()
-                            .orElseThrow(() -> {
-                                throw new FunctionException("Ошибка при выявлении средней " +
-                                        "продолжительности сессии");
-                            })
-            );
+            return (int) Math.round(list.stream()
+                    .mapToLong(SleepingSession::getDurationInMinutes)
+                    .average()
+                    .orElseThrow(() -> {
+                        throw new FunctionException("Ошибка при выявлении средней " +
+                                "продолжительности сессии");
+                    }));
         };
     }
 }
