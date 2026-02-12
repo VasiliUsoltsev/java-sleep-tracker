@@ -118,7 +118,7 @@ public class SleepTrackerAppTest {
     void functionAvgDurationSleepSession() {
         loadLogsSleepSession();
         loadFunctions();
-        Assertions.assertEquals("411,94", listFunction.get(3).calculate(listSleepingSession));
+        Assertions.assertEquals("411.94", listFunction.get(3).calculate(listSleepingSession));
     }
 
     @DisplayName("Функция выявления средней продолжительности сессии - проверка подсчета при пустом списке")
