@@ -58,8 +58,4 @@ public class SleepingSession implements Comparable<SleepingSession> {
     }
 }
 
-enum SleepQuality {
-    GOOD,
-    NORMAL,
-    BAD
-}
+
