@@ -8,10 +8,11 @@ import java.util.function.Function;
 
 public class CountSleepSession extends BasicFunction<Integer> {
     public CountSleepSession(String resultDescription) {
-        super(getFunction(), resultDescription);
+        super(resultDescription);
+        super.setFunction(getFunction());
     }
 
-    private static Function<List<SleepingSession>, Integer> getFunction() {
+    private Function<List<SleepingSession>, Integer> getFunction() {
         return list -> {
             if (list == null || list.isEmpty()) throw new FunctionException("Ошибка - нет данных для анализа");
             return list.size();

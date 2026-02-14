@@ -8,10 +8,11 @@ import java.util.function.Function;
 
 public class MaxDurationSleepSession extends BasicFunction<Long> {
     public MaxDurationSleepSession(String resultDescription) {
-        super(getFunction(), resultDescription);
+        super(resultDescription);
+        super.setFunction(getFunction());
     }
 
-    private static Function<List<SleepingSession>, Long> getFunction() {
+    private Function<List<SleepingSession>, Long> getFunction() {
         return list -> {
             return list.stream()
                     .map(SleepingSession::getDurationInMinutes)

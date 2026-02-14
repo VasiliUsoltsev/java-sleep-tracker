@@ -8,10 +8,11 @@ import java.util.function.Function;
 
 public class AvgDurationSleepSession extends BasicFunction<Integer> {
     public AvgDurationSleepSession(String resultDescription) {
-        super(getFunction(), resultDescription);
+        super(resultDescription);
+        super.setFunction(getFunction());
     }
 
-    private static Function<List<SleepingSession>, Integer> getFunction() {
+    private Function<List<SleepingSession>, Integer> getFunction() {
         return list -> {
             return (int) Math.round(list.stream()
                     .mapToLong(SleepingSession::getDurationInMinutes)
